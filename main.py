@@ -1,38 +1,41 @@
-
-rates = {
-    "USD": 1.00,
-    "INR": 96.50,
-    "EUR": 0.88,
-    "GBP": 0.75
-}
-
-def get_amount():
-    amount = float(input("Enter amount: "))
-    return amount
-
-
-def get_currency(currency_ip):
-    currency = input(currency_ip).upper()
-    return currency
-
-
-def convert_currency(amount, from_currency, to_currency):
-    usd = amount / rates[from_currency]  #amount->USD
-    converted = usd * rates[to_currency] #USD->to_currency
-    return converted
-
-
-def display_result(amount, from_currency, to_currency, converted):
-    print(f"\n{amount:.2f} {from_currency} = {converted:.2f} {to_currency}")
-
-
-# Main Program
-amount = get_amount()
-from_currency = get_currency("From Currency (USD/INR/EUR/GBP): ")
-to_currency = get_currency("To Currency (USD/INR/EUR/GBP): ")
-
-if from_currency in rates and to_currency in rates:
-    result = convert_currency(amount, from_currency, to_currency)
-    display_result(amount, from_currency, to_currency, result)
-else:
-    print("Invalid currency code!")
+from converter import convert
+from utils import is_valid_amount, is_valid_currency_name, format_result
+ 
+ 
+def get_amount_from_user():
+    while True:
+        text = input("Enter the amount to convert: ").strip()
+        if is_valid_amount(text):
+            return float(text)
+        print("That is not valid amount.Try again!\n")
+ 
+ 
+def get_currency_from_user(prompt):
+    while True:
+        currency_name = input(prompt).strip().upper()
+        if is_valid_currency_name(currency_name):
+            return currency_name
+        print("Please enter a valid 3-letter currency code,(USD / EUR / GBP / JPY /INR).\n")
+ 
+ 
+def run():
+    print("-" * 10," Currency Converter ","-" * 10)
+    print("Tip: Use 3-letter codes like .\n")
+ 
+    amount = get_amount_from_user()
+    from_currency = get_currency_from_user("Convert FROM which currency?(USD / EUR / GBP / JPY /INR)\n")
+    to_currency = get_currency_from_user("Convert TO which currency?(USD / EUR / GBP / JPY /INR)\n")
+ 
+    print("\nFetching the latest exchange rate...\n")
+ 
+    try:
+        converted_amount, rate = convert(amount, from_currency, to_currency)
+    except ValueError as error:
+        print(f"Error: {error}")
+        return
+ 
+    print(format_result(amount, from_currency, converted_amount, to_currency, rate))
+ 
+ 
+if __name__ == "__main__":
+    run()
