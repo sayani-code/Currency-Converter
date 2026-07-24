@@ -1,6 +1,6 @@
 # Currency Converter
 
-A simple command-line currency converter written in Python. It fetches live exchange rates from the **Frankfurter API** and converts between currencies using a clean, modular project structure. The project is designed to demonstrate good Python programming practices while remaining easy for beginners to understand.
+A simple desktop currency converter with a GUI, written in Python using Tkinter. It fetches live exchange rates from the **Frankfurter API** and converts between currencies using a clean, modular project structure. The project is designed to demonstrate good Python programming practices while remaining easy for beginners to understand.
 
 ---
 
@@ -99,9 +99,17 @@ The application supports every currency available through the **Frankfurter API*
 * GBP
 * INR
 * JPY
-
-
-...and many more.
+* AUD
+* CAD
+* CHF
+* CNY
+* SGD
+* NZD
+* ZAR
+* AED
+* SEK
+* MX
+* NBRL
 
 ---
 
