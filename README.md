@@ -1,148 +1,192 @@
-# 💱 Currency Converter
+# Currency Converter
 
-A beginner-friendly command-line Currency Converter built with Python.
-
-This project allows users to convert an amount from one currency to another using predefined exchange rates. It was developed as a practice project to strengthen Python fundamentals, including functions, dictionaries, loops, exception handling, and input validation.
+A simple command-line currency converter written in Python. It fetches live exchange rates from the **Frankfurter API** and converts between currencies using a clean, modular project structure. The project is designed to demonstrate good Python programming practices while remaining easy for beginners to understand.
 
 ---
 
-## ✨ Features
+## Features
 
-- 💱 Convert between multiple currencies
-- 📌 Uses predefined exchange rates
-- 🔤 Accepts uppercase and lowercase currency codes
-- ✅ Validates numeric input
-- ⚠️ Handles invalid currency codes gracefully
-- 🔁 Perform multiple conversions without restarting the program
-- 📋 Clean and formatted console output
-- 🧩 Organized using Python functions
+* 🌍 Live exchange rates from the Frankfurter API
+* 💱 Convert between supported world currencies
+* 🧩 Modular, easy-to-read codebase
+* ✅ Input validation for user entries
+* ⚠️ Graceful handling of common errors
+* 📚 Beginner-friendly project structure
 
 ---
 
-## 💵 Supported Currencies
-
-| Currency |     Name       |
-|----------|----------------|
-|   USD    | US Dollar      |
-|   INR    | Indian Rupee   |
-|   EUR    | Euro           |
-|   GBP    | British Pound  |
-
----
-
-## 📂 Project Structure
+## Project Structure
 
 ```text
-Currency-Converter/
-│
-├── main.py
-└── README.md
+currency_converter/
+├── main.py         # Entry point – handles user interaction
+├── converter.py    # Core conversion logic
+├── api.py          # Fetches exchange rates from the API
+├── utils.py        # Helper functions (validation & formatting)
+└── README.md       # Project documentation
 ```
+
+Each file has a single responsibility, following the principle of **separation of concerns**.
+
+* **main.py** handles user input and output.
+* **converter.py** performs the conversion logic.
+* **api.py** communicates with the exchange rate API.
+* **utils.py** contains reusable helper functions with no dependencies on the other modules.
+
+This structure keeps the code organized, reusable, and easier to maintain.
 
 ---
 
-## 🚀 Getting Started
+## Requirements
 
-### Clone the repository
+* Python 3.7 or later
+* `requests`
+
+---
+
+## Installation
+
+Clone the repository and install the required dependency.
 
 ```bash
 git clone https://github.com/sayani-code/Currency-Converter.git
+cd currency_converter
+pip install requests
 ```
 
-### Navigate into the project
+---
 
-```bash
-cd Currency-Converter
-```
+## How to Run
 
-### Run the program
+Start the application by running:
 
 ```bash
 python main.py
 ```
 
----
+You'll be prompted to enter:
 
-## 📸 Sample Output
+1. The amount to convert
+2. The source currency (e.g. `USD`)
+3. The target currency (e.g. `EUR`)
+
+Example:
 
 ```text
 ----------------------------------------
-        Currency Converter
----------------------------------------
+ Currency Converter
+----------------------------------------
+Tip: Use 3-letter currency codes like USD, EUR, GBP, JPY, INR.
 
-Supported Currencies:
-USD
-INR
-EUR
-GBP
+Enter the amount to convert: 100
+Convert FROM which currency? USD
+Convert TO which currency? EUR
 
-Enter Amount: 100
+Fetching the latest exchange rate...
 
-From Currency: usd
-
-To Currency: inr
-
------------------------------------------
-Amount         : 100.00 USD
-Exchange Rate  : 86.00
-Converted      : 8600.00 INR
------------------------------------------
-
-Convert Again? (Y/N): N
-
-Thank you for using Currency Converter!
+100.00 USD = 92.30 EUR
+(1 USD = 0.9230 EUR)
 ```
 
 ---
 
-## 🧠 Concepts Practiced
+## Supported Currencies
 
-- Variables
-- Data Types
-- User Input
-- Dictionaries
-- Functions
-- Conditional Statements
-- Loops
-- Exception Handling
-- String Methods
-- Input Validation
+The application supports every currency available through the **Frankfurter API**, including:
 
----
+* USD
+* EUR
+* GBP
+* INR
+* JPY
 
-## 🎯 Future Improvements
 
-- Fetch live exchange rates using an API
-- Save conversion history
-- Add more currencies
-- Build a GUI using Tkinter
-- Store exchange rates in a JSON file
-- Add currency symbols automatically
+...and many more.
 
 ---
 
-## 👨‍💻 Author
+## Exchange Rate Source
 
-**Sayani Saha**
+This project uses the **Frankfurter API**, a free exchange rate API that requires **no API key or account**. It's an excellent choice for learning because you can start building immediately without additional setup.
 
-GitHub: https://github.com/sayani-code
+Learn more at:
 
----
-
-## 🤝 Contributing
-
-Contributions, suggestions, and improvements are always welcome.
-
-If you'd like to improve this project, feel free to fork the repository and create a pull request.
+https://www.frankfurter.app/
 
 ---
 
-## ⭐ Support
+## Error Handling
 
-If you found this project useful or learned something from it, please consider giving it a **⭐ Star** on GitHub.
+The application is designed to handle common issues, including:
+
+* Invalid currency codes
+* Invalid numeric input
+* Network connection problems
+* API service errors
+
+Meaningful error messages are displayed to help users understand what went wrong.
 
 ---
 
-## 📄 License
+## Learning Goals
 
-This project is licensed under the MIT License.
+This project demonstrates several important Python concepts:
+
+* Modular programming
+* Separation of concerns
+* Functions
+* API requests with `requests`
+* Input validation
+* Error handling
+* Clean project organization
+
+---
+
+## Ideas for Future Improvements
+
+Once you're comfortable with the basics, try extending the project by adding:
+
+* Command-line arguments using `argparse`
+* Exchange rate caching
+* Unit tests with `pytest`
+* A graphical interface using `tkinter`
+* Historical exchange rate support
+* Support for converting multiple amounts in one session
+* Saving conversion history to a file
+
+---
+
+## Why This Structure?
+
+This project follows common practices used in real-world Python applications.
+
+* Keep user interaction separate from business logic.
+* Keep network requests separate from calculations.
+* Write reusable helper functions.
+* Organize code so individual modules are easy to understand and test.
+
+Following these principles makes the project easier to maintain, test, and extend.
+
+---
+
+## License
+
+This project is licensed under the **MIT License**. Feel free to use, modify, and share it for learning or personal projects.
+
+---
+
+## Contributing
+
+Contributions, suggestions, and improvements are welcome. Feel free to fork the repository, open an issue, or submit a pull request.
+
+---
+
+## Acknowledgements
+
+* Python
+* Requests
+* Frankfurter API
+
+---
+
+Happy coding! 🚀
